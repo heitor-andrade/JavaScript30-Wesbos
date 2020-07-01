@@ -18,13 +18,17 @@
 const secondHand = document.querySelector('.second-hand')
 const minHand = document.querySelector('.min-hand')
 const hourHand = document.querySelector('.hour-hand')
+let counter = 0 // counter para incrementar os graus em 360 a cada minuto
 
 function setDate(){
     const now = new Date(); // o que é esse new
     const seconds = now.getSeconds();
-    const secondsDegrees = seconds * 6 + 90
+    console.log(seconds)
+    const secondsDegrees = (seconds * 6 + 90) + 360 * counter
+    console.log(secondsDegrees)
     secondHand.style.transform = `rotate(${secondsDegrees}deg)`
-
+    if (seconds == 59)  counter++
+    
     const minutes = now.getMinutes()
     const minutesDegrees = minutes * 6 + 90
     minHand.style.transform = `rotate(${minutesDegrees}deg)`
