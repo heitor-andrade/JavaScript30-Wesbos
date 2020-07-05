@@ -1,3 +1,11 @@
+<!-- 
+  NOVAS
+  - console.log({variável}): printa o nome da variável, junto com seu valor
+  - <array>.splice(index, 1): retira o elemento do array daquele index
+      e retorna o elemento tirado
+      se 1 for outro número, ele vai tirar aquela quantidades de elementos, daquele index pra frente
+ -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,14 +35,32 @@
     // Some and Every Checks
     // Array.prototype.some() // is at least one person 19 or older?
     // Array.prototype.every() // is everyone 19 or older?
+    const older = people.some(p => {
+      if(2020 - p.year >= 19) return true
+    })
+    console.log(older)
+
+    const olderAll = people.every(p => {
+      if(2020 - p.year >= 19) return true
+    })
+    console.log(olderAll)
 
     // Array.prototype.find()
     // Find is like filter, but instead returns just the one you are looking for
     // find the comment with the ID of 823423
+    const searchById = comments.find( comment => {
+      if(comment.id == 823423) return true;
+    })
+    console.log(searchById)
 
     // Array.prototype.findIndex()
     // Find the comment with this ID
     // delete the comment with the ID of 823423
+    const index = comments.findIndex( comment => {
+      if(comment.id == 823423) return true;
+    })
+
+    comments.splice(index, 1)
 
   </script>
 </body>
