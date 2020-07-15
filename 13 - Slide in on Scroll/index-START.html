@@ -1,3 +1,10 @@
+<!-- 
+  NOVAS:
+    - window.scrollY: retorna quantos píxels a tela se moveu para baixo
+    - debounce: função que seta um intervalo mínimo de espera para outra função ocorrer
+    - img atributes: .height, .offsetTop
+ -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,6 +50,7 @@
   </div>
 
   <script>
+    // debounce, é para chamar funções em intervalos mínimos quando um evento ocorrer
     function debounce(func, wait = 20, immediate = true) {
       var timeout;
       return function() {
@@ -57,6 +65,27 @@
         if (callNow) func.apply(context, args);
       };
     }
+
+    const sliderImages = document.querySelectorAll('.slide-in')
+
+    function checkSlide(e) {
+      // descobrir quais imagens estão aparecendo na página -uns 50 % dela, talvez-
+      sliderImages.forEach(slideImage => {
+        // half way through the image
+        const slideInAt = (window.scrollY + window.innerHeight) - slideImage.height /2;
+        console.log(window.scrollY, window.innerHeight, slideImage.height)
+        // bottom of the image
+        const imageBottom = slideImage.offsetTop + slideImage.height
+        const isHalfShown = slideInAt > slideImage.offsetTop
+        const isNotScrolledPast = window.scrollY < imageBottom;
+        if (isHalfShown && isNotScrolledPast)
+          slideImage.classList.add('active')
+        else
+          slideImage.classList.remove('active')
+      })
+    }
+
+    window.addEventListener('scroll', debounce(checkSlide, 50))
 
   </script>
 
