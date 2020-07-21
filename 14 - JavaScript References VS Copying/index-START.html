@@ -1,3 +1,20 @@
+<!-- 
+  NOVAS:
+  - copy e reference: copy é uma cópia do valor e reference é como se uma variável referenciasse a outra
+      ou seja, quando referenciadas, se uma variável mudar a outra é atualizada
+      array = array é uma "reference", object = object tbm
+      copy = array.slice(): faz uma "copy"
+      copy = [].concat(array)
+      copy = [...players]
+      copy = Array.from(array)
+
+      const object = Object.assign({}, <object>, {<new atributtes>}): faz uma cópia de um objeto e dá novos atributos para ele
+          <object>: é o objeto a ser copiado
+          <new atributtes>: um exemplo seria "number: 99"
+            Object.assign(): é de apenas um nível de profundidade
+            ou seja, <objeto>.<objeto1> estaria referenciado com <copy>.<objeto1>
+    -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,7 +56,7 @@
     // with Objects
     const person = {
       name: 'Wes Bos',
-      age: 80
+      age: 800
     };
 
     // and think we make a copy:
