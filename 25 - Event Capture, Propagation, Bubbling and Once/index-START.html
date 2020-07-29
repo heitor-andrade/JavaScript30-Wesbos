@@ -1,3 +1,10 @@
+<!-- 
+Novas:
+  Bubbling: o click pega os elementos de volta também
+  addEventListener(_, _, {capture = true}): faz o disparo do click ser de cima para baixo
+  e.stopPropagation(): para o bubbling 
+ -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,6 +49,16 @@
 
 <button></button>
 <script>
+  const divs = document.querySelectorAll('div');
+  e.stopPropagation(); // stop bubbling
+  function logText(e) {
+    console.log(this.classList.value);
+  }
+
+divs.forEach( div => div.addEventListener('click', logText, {
+  capture: true,
+  once: true
+}));
 
 </script>
 </body>
